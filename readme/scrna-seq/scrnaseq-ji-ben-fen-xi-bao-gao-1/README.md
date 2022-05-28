@@ -20,7 +20,7 @@
 
 ### **2.1 实验流程**
 
-![图1 单细胞转录组实验流程图](<../../../.gitbook/assets/image (3).png>)
+![图1 单细胞转录组实验流程图](<../../../.gitbook/assets/image (4).png>)
 
 #### 1）单细胞悬液的制备和质检
 
@@ -84,7 +84,7 @@ _样本数量较多时可能会显示不全，建议直接查看BMK\_1\_rawdata/
 
 测序数据及其质量评估结果文件路径：BMK\_1\_rawData/
 
-[测序数据及其质量评估结果文件下载链接](ce-xu-shu-ju-ji-qi-zhi-liang-ping-gu-jie-guo-wen-jian-xia-zai-lian-jie.md)
+[测序数据及其质量评估结果文件下载链接](bmk\_1\_rawdata.md)
 
 ### **3.2 测序数据统计**
 
