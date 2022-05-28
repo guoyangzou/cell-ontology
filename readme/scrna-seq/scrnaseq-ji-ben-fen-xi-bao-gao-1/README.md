@@ -86,7 +86,14 @@ _样本数量较多时可能会显示不全，建议直接查看BMK\_1\_rawdata/
 
 [测序数据及其质量评估结果文件下载链接](ce-xu-shu-ju-ji-qi-zhi-liang-ping-gu-jie-guo-wen-jian-xia-zai-lian-jie.md)
 
+### **3.2 测序数据统计**
 
+利用Cell Ranger\[1]进一步对测序数据进行统计分析，CellRanger分析结果网页版报告链接如下:
+
+CellRanger分析结果网页版报告链接：
+
+1. [M1.web\_summary.html](file:///C:/Users/yefei/zougy/Note/%E5%8D%95%E7%BB%86%E8%83%9E%E8%BD%AC%E5%BD%95%E7%BB%84%E4%BC%98%E5%8C%96%E5%90%8E%E6%8A%A5%E5%91%8A/V3/multi\_biomarker\_Web\_Report/HTML/M1.web\_summary.html)
+2. M2.web\_summary.html
 
 
 
