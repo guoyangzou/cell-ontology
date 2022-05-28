@@ -20,7 +20,7 @@
 
 ### **2.1 实验流程**
 
-![图1 单细胞转录组实验流程图](<../../.gitbook/assets/image (2).png>)
+![图1 单细胞转录组实验流程图](<../../../.gitbook/assets/image (1) (1).png>)
 
 #### 1）单细胞悬液的制备和质检
 
@@ -40,7 +40,7 @@
 
 ### **2.2 分析流程**
 
-![图2 单细胞转录组生信分析流程图](<../../.gitbook/assets/image (4).png>)
+![图2 单细胞转录组生信分析流程图](<../../../.gitbook/assets/image (2) (1).png>)
 
 ## 3 数据质量评估及表达定量 <a href="#a26" id="a26"></a>
 
@@ -48,7 +48,7 @@
 
 高通量测序下机得到的原始图像文件经 CASAVA 碱基识别转化为测序读段（Sequenced Reads），以 FASTQ 格式存储。FASTQ是一种存储生物序列及相应质量值的常用文本格式，格式如下。10xGenomics测序数据每个样本的数据包含I1，R1，R2。I1存储了index信息；R1即read1，28bp为细胞 barcode 和 UMI信息。R2即read2。使用fastqc软件对每个样本的read2数据做质控分析。
 
-![图3 FASTQ格式文件示意图](../../.gitbook/assets/fastq.png)
+![图3 FASTQ格式文件示意图](<../../../.gitbook/assets/fastq (1).png>)
 
 该项目各样品数据产出统计见下表：
 
@@ -61,13 +61,13 @@
 
 _注：SampleID：样本名；_
 
-_ReadSum：Raw Data中pair-end Reads总数；_&#x20;
+_ReadSum：Raw Data中pair-end Reads总数；_
 
-_BaseSum：Raw Data总碱基数；_&#x20;
+_BaseSum：Raw Data总碱基数；_
 
 _GC(%):Raw Data GC含量，即Raw Data中G和C两种碱基占总碱基的百分比；_
 
-_N(%):Raw Data中N占比； Q20(%):Raw Data质量值大于或等于20的碱基所占的百分比；_&#x20;
+_N(%):Raw Data中N占比； Q20(%):Raw Data质量值大于或等于20的碱基所占的百分比；_
 
 _Q30(%):Raw Data质量值大于或等于30的碱基所占的百分比。_
 
@@ -116,7 +116,7 @@ _Q30 Bases in UMI：UMI序列中质量值大于或等于30的碱基所占的百�
 
 Cell Ranger调用STAR\[2]软件将Read2比对到参考基因组上，基于STAR的比对结果，结合参考数据集（gtf／gff文件）里的信息，统计基因组上各个区域的reads覆盖信息，可以得到比对到外显子、内含子、基因间区的比例信息，作为数据质控的参考指标。将reads既比对到已知转录本的外显子上又在同一条链上的作为比对到转录本上的依据，如果该reads比对到已知的单个基因上，将reads称为唯一比对到转录组上，只有比对到转录本上的reads才能作为UMI计数。STAR是一款RNA-Seq数据分析常用的分段比对工具，可以用来发现外显子的连接以及融合现象，其基本工作原理主要分成两步：种子序列的寻找，以及聚类／连接／打分。下图为其原理示意图：
 
-![图4 STAR 比对原理](../../.gitbook/assets/image.png)
+![图4 STAR 比对原理](<../../../.gitbook/assets/image (5).png>)
 
 _注：最大可比对标签（Maximum Mappable Prefix, MMP）的寻找用于发现（a）外显子连接处，（b）错配，（c）多聚 A 尾， 或者接头，或者低质量尾。_
 
@@ -129,62 +129,12 @@ CellRanger分析比对结果统计如下表：
 | M1       | 93.7%                  | 91.6%                              | 3.8%                                           | 40.5%                                        | 47.3%                                      | 2.8%                           | 41.6%                                     | 65.5%                   |
 | M2       | 92.7%                  | 90.7%                              | 4.0%                                           | 42.8%                                        | 44.0%                                      | 2.7%                           | 38.4%                                     | 62.8%                   |
 
-_注：sampleID：样本ID；_\
-_Reads Mapped to Genomes：比对到参考基因组上的Reads在总Reads中占的百分比；_\
-_Reads Mapped Confidently to Genome：比对到参考基因组并得到转录本GTF信息支持的Reads在总Reads中占的百分比；_\
-_Reads Mapped Confidently to Intergenic Regions：比对到基因间区域的Reads在总Reads中占的百分比；_\
-_Reads Mapped Confidently to Intronic Regions：比对到内含子区域的Reads在总Reads中占的百分比；_\
-_Reads Mapped Confidently to Exonic Regions：比对到外显子区域的Reads在总Reads中占的百分比；_\
-_Reads Mapped Antisense to Gene：比对到基因反义链的Reads在总Reads中占的百分比；_\
-_Reads Mapped Confidently to Transcriptome：比对到已知参考转录本的Reads在总Reads中占的百分比；_\
-_Fraction Reads in Cells：比对到参考基因且来源于高质量细胞的Reads在总Reads中占的百分比。_
-
-### **3.4 细胞鉴定及基因表达定量**
-
-Cell Ranger对每个Barcode的每个基因会去除重复的UMI，统计unique UMI数目作为该细胞内该基因的表达量，通过UMI可以区分一条read是否属于生物学重复还是技术重复，能够有效地去除PCR效应。CellRanger分析细胞统计如下表：
-
-**表6 CellRanger分析细胞信息统计**
-
-| sampleID | Estimated Number of Cells | Mean Reads per Cell | Median UMI Counts per Cell | Median Genes per Cell | Total Genes Detected |
-| -------- | ------------------------- | ------------------- | -------------------------- | --------------------- | -------------------- |
-| M1       | 6,882                     | 43,592              | 1,292                      | 792                   | 25,556               |
-| M2       | 6,567                     | 45,683              | 1,294                      | 740                   | 26,118               |
-
-_注：sampleID：样本ID；_\
-_Estimated Number of Cells：检测到的细胞数目；_\
-_Mean Reads per Cell：每个细胞平均Reads数目 ；_\
-_Median UMI Counts per Cell：每个细胞的UMI中位数；_\
-_Median Genes per Cell：每个细胞中基因数目的中位数；_\
-_Total Genes Detected：所有细胞的基因总数。_
-
-细胞基因表达量统计结果文件路径：BMK\_2\_cellranger\_analysis/BMK\_1\_summary/\*.raw\_expMat.xls
-
-数据统计及细胞定量的结果文件下载链接
-
-Cell Ranger其它分析结果文件路径：BMK\_2\_cellranger\_analysis
-
-## 4 细胞亚群分析 <a href="#a52" id="a52"></a>
-
-利用Cell Ranger对测序数据进行比对及定量，后续利用Seurat\[3]软件做进一步分析，主要包括细胞过滤、数据标准化处理、批次效应校正\[4]、PCA（Principal Component Analysis）分析、t-SNE（t-Distributed Stochastic Neighbor Embedding）分析\[5]、UMAP（Uniform Manifold Approximation and Projection）分析\[6]、细胞聚类、marker gene分析、细胞注释等。
-
-### **4.1 细胞过滤**
-
-理想情况下中的细胞只有1个，但实验过程中也存在空细胞，或者存在2个甚至多个细胞的情况；并且当细胞发生死亡或者裂解时，细胞中将含有大量的线粒体基因，因此需要根据细胞的UMI总数、线粒体基因比例及单个细胞鉴定到的基因数目3个指标进行高质量细胞筛选，本项目过滤参数设置为：
-
-(1) 线粒体基因比例(%)：>= 20，一般认为细胞发生凋亡、破裂会导致线粒体基因偏高，因此需要过滤掉线粒体基因比例过高的细胞；
-
-(2) 单个细胞鉴定到的UMI数目：≥ 100，对单个细胞检出的转录本数目进行过滤；
-
-(3) 单个细胞鉴定到的基因数目：500 \~ 7000，正常情况下一个细胞表达的基因数目处于一定范围内，因此利用基因数目可以判断GEMs油滴中是否包含1个以上细胞、或者细胞是否发生破裂。
-
-同时也会对检出不可信的基因进行过滤，某个基因表达至少在10个细胞中检测到才会被认为是可信检出。
-
-统计过滤前后各个样本细胞的nGene（number of Gene），nUMI（number of UMI）和percent.mt（线粒体基因）占比，结果如下图所示：
-
-[https://docs.google.com/presentation/d/1ol2DnIDbbFEIMgoSvCGkLALpJNY4D0CngDpZdmNlklQ/edit#slide=id.p](https://docs.google.com/presentation/d/1ol2DnIDbbFEIMgoSvCGkLALpJNY4D0CngDpZdmNlklQ/edit#slide=id.p)\
-
-
-![](<../../.gitbook/assets/image (1).png>)
-
-![](<../../.gitbook/assets/image (3).png>)
-
+**注：sampleID：样本ID；**\
+**Reads Mapped to Genomes：比对到参考基因组上的Reads在总Reads中占的百分比；**\
+**Reads Mapped Confidently to Genome：比对到参考基因组并得到转录本GTF信息支持的Reads在总Reads中占的百分比；**\
+**Reads Mapped Confidently to Intergenic Regions：比对到基因间区域的Reads在总Reads中占的百分比；**\
+**Reads Mapped Confidently to Intronic Regions：比对到内含子区域的Reads在总Reads中占的百分比；**\
+**Reads Mapped Confidently to Exonic Regions：比对到外显子区域的Reads在总Reads中占的百分比；**\
+**Reads Mapped Antisense to Gene：比对到基因反义链的Reads在总Reads中占的百分比；**\
+**Reads Mapped Confidently to Transcriptome：比对到已知参考转录本的Reads在总Reads中占的百分比；**\
+**Fraction Reads in Cells：比对到参考基因且来源于高质量细胞的Reads在总Reads中占的百分比；**
