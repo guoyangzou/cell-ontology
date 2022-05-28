@@ -8,4 +8,4 @@
       * [项目流程介绍](readme/scrna-seq/scrnaseq-ji-ben-fen-xi-bao-gao/xiang-mu-liu-cheng-jie-shao/README.md)
         * [实验流程](readme/scrna-seq/scrnaseq-ji-ben-fen-xi-bao-gao/xiang-mu-liu-cheng-jie-shao/shi-yan-liu-cheng.md)
         * [分析流程](readme/scrna-seq/scrnaseq-ji-ben-fen-xi-bao-gao/xiang-mu-liu-cheng-jie-shao/fen-xi-liu-cheng.md)
-    * [scRNA-seq基本分析报告新版](readme/scrna-seq/scrnaseq-ji-ben-fen-xi-bao-gao-xin-ban.md)
+    * [scRNA-seq基本分析报告](readme/scrna-seq/scrnaseq-ji-ben-fen-xi-bao-gao-1.md)

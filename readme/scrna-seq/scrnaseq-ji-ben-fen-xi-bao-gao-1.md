@@ -1,8 +1,14 @@
-# scRNA-seq基本分析报告新版
+# scRNA-seq基本分析报告
 
 ## 摘要 <a href="#a9" id="a9"></a>
 
 完成2个样本的单细胞测序，共计得到13449个细胞,平均每个样本原始数据量为90.60 G。
+
+| 项目信息        | 详情              |
+| ----------- | --------------- |
+| project\_id | scRNA-seq基本分析报告 |
+| samples     | M1,M2           |
+| groups      | M1\_vs\_M2      |
 
 ## 1 背景介绍 <a href="#a10" id="a10"></a>
 
@@ -46,12 +52,41 @@
 
 该项目各样品数据产出统计见下表：
 
-
+**表2 原始数据产出统计**
 
 | ReadSum     | BaseSum        | GC(%) | N(%) | Q20(%) | Q30(%) | sampleID |
 | ----------- | -------------- | ----- | ---- | ------ | ------ | -------- |
 | 300,000,000 | 90,600,000,000 | 46.99 | 0.0  | 96.23  | 91.01  | M1       |
 | 300,000,000 | 90,600,000,000 | 46.68 | 0.0  | 95.71  | 89.81  | M2       |
+
+_注：SampleID：样本名；_
+
+_ReadSum：Raw Data中pair-end Reads总数；_&#x20;
+
+_BaseSum：Raw Data总碱基数；_&#x20;
+
+_GC(%):Raw Data GC含量，即Raw Data中G和C两种碱基占总碱基的百分比；_
+
+_N(%):Raw Data中N占比； Q20(%):Raw Data质量值大于或等于20的碱基所占的百分比；_&#x20;
+
+_Q30(%):Raw Data质量值大于或等于30的碱基所占的百分比。_
+
+**表3 样本信息对照表**
+
+| #ID | read1\_name                          | read2\_name                          |
+| --- | ------------------------------------ | ------------------------------------ |
+| M1  | Mouse\_demo-SC-020001\_good\_1.fq.gz | Mouse\_demo-SC-020001\_good\_2.fq.gz |
+| M2  | Mouse\_demo-SC-020002\_good\_1.fq.gz | Mouse\_demo-SC-020002\_good\_2.fq.gz |
+
+_注：#ID：样本名称；_\
+_read1\_name、read2\_name：样本名称对应的双端fq文件名；_\
+_样本数量较多时可能会显示不全，建议直接查看BMK\_1\_rawdata/data\_cfg.xls文件；_
+
+测序数据及其质量评估结果文件路径：BMK\_1\_rawData/
+
+[测序数据及其质量评估结果文件下载链接](file:///C:/Users/yefei/zougy/Note/%E5%8D%95%E7%BB%86%E8%83%9E%E8%BD%AC%E5%BD%95%E7%BB%84%E4%BC%98%E5%8C%96%E5%90%8E%E6%8A%A5%E5%91%8A/V3/multi\_biomarker\_Web\_Report/BMK\_1\_rawData/)
+
+
 
 
 
