@@ -84,7 +84,7 @@ _样本数量较多时可能会显示不全，建议直接查看BMK\_1\_rawdata/
 
 测序数据及其质量评估结果文件路径：BMK\_1\_rawData/
 
-测序数据及其质量评估结果文件下载链接
+[测序数据及其质量评估结果文件下载链接](ce-xu-shu-ju-ji-qi-zhi-liang-ping-gu-jie-guo-wen-jian-xia-zai-lian-jie.md)
 
 
 
