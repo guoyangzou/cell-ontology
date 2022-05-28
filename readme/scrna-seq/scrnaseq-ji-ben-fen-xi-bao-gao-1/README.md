@@ -92,7 +92,7 @@ _样本数量较多时可能会显示不全，建议直接查看BMK\_1\_rawdata/
 
 CellRanger分析结果网页版报告链接：
 
-1. [M1.web\_summary.html](file:///C:/Users/yefei/zougy/Note/%E5%8D%95%E7%BB%86%E8%83%9E%E8%BD%AC%E5%BD%95%E7%BB%84%E4%BC%98%E5%8C%96%E5%90%8E%E6%8A%A5%E5%91%8A/V3/multi\_biomarker\_Web\_Report/HTML/M1.web\_summary.html)
+1. M1.web\_summary.html
 2. M2.web\_summary.html
 
 

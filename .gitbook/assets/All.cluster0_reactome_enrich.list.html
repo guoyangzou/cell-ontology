@@ -1,0 +1,66 @@
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	<html lang="zh_CN" xmlns="http://www.w3.org/1999/xhtml"><head><title> Reactome通路富集表</title>
+	<meta charset="UTF-8"></meta>
+	<!--[if lt IE 9]>
+	<script src="../src//js/html5shiv.min.js"></script><script src="../src//js/respond.min.js"></script>
+	<![endif]-->
+	<meta content="IE=edge" http-equiv="X-UA-Compatible"></meta>
+	<meta content="width=device-width, initial-scale=1" name="viewport"></meta>
+	<link href="../src//css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+	<link href="../src//css/index.css" type="text/css" rel="stylesheet" />
+	<link href="../src//js/fancyBox/jquery.fancybox.css" type="text/css" rel="stylesheet" />
+	<link href="../src//css/nav.css" type="text/css" rel="stylesheet" />
+	<link href="../src//css/raxus.css" type="text/css" rel="stylesheet" />
+	<script src="../src//js/jquery-1.11.3.min.js" type="text/javascript"></script>
+	<script src="../src//js/nav.js" type="text/javascript"></script>
+	<script src="../src//js/raxus-slider.min.js" type="text/javascript"></script>
+	<script src="../src//js/fancyBox/jquery.fancybox.pack.js" type="text/javascript"></script>
+	<script src="../src//js/fancyBox/jquery.mousewheel-3.0.6.pack.js" type="text/javascript"></script>
+	<script src="../src//js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../src//js/ready.js" type="text/javascript"></script>
+	<script src="../src//js/scrolltop.js" type="text/javascript"></script>
+	</head>
+	<body style="overflow:hidden"> 
+	<div class="container shadow"  id="box"><header><img src="../src//images/logo.jpg" class="pull-right" /></header>
+	<div role="main" ><header><h2 id="title" class="text-center"> Reactome通路富集表</h2>
+	</header>
+	</div>
+<div class="table-responsive" id="textbox"><p>注：ReactomeID：Reactome编号；Description：Reactome编号对应的功能描述；GeneRatio：注释到Reactome编号上的cluster差异高表达基因数与cluster差异高表达基因总数的比值；BgRatio：注释到Reactome编号上的背景基因数与背景基因总数的比值；pvalue：显著性检验p值；padj：校正后的p值；geneID：注释到Reactome编号上的基因；geneSymbol：注释到Reactome通路编号上的差异基因名称；Count：注释到Reactome编号上的基因数。</p></div>
+<div class="table-responsive" id="box2"><table class="table table-bordered table-hover table-striped"><thead><tr class="bg-info">
+<script type="text/javascript">
+    var textbox=$("#textbox").height();
+    var windowHeight = $(window).height();
+    var height = windowHeight*0.98;
+    var height2 = height*0.8-textbox;
+    $("#box").css('height',height);
+    $("#box2").css('height',height2);
+    $(window).resize(function() {
+        var windowHeight = $(window).height();
+        var height = windowHeight*0.98;
+		 var height2 = height*0.8-textbox;
+        $("#box").css('height',height);
+        $("#box2").css('height',height2);
+    });
+</script>
+<th>ReactomeID</th>
+<th>Description</th>
+<th>GeneRatio</th>
+<th>BgRatio</th>
+<th>pvalue</th>
+<th>p.adjust</th>
+<th>qvalue</th>
+<th>geneID</th>
+<th>geneSymbol</th>
+<th>Count</th>
+</tr></thead>
+<tbody>
+<tr><td>R-MMU-382551</td><td>Transport of small molecules</td><td>9/17</td><td>653/8880</td><td>8.46778888659635e-07</td><td>8.04439944226653e-05</td><td>5.61548105111126e-05</td><td>ENSMUSG00000002985/ENSMUSG00000026576/ENSMUSG00000030302/ENSMUSG00000027523/ENSMUSG00000032554/ENSMUSG00000017740/ENSMUSG00000007097/ENSMUSG00000033379/ENSMUSG00000040907</td><td>Apoe/Atp1b1/Atp2b2/Gnas/Trf/Slc12a5/Atp1a2/Atp6v0b/Atp1a3</td><td>9</td></tr>
+<tr><td>R-MMU-5578775</td><td>Ion homeostasis</td><td>4/17</td><td>52/8880</td><td>2.35230031365502e-06</td><td>8.04756801828705e-05</td><td>5.6176929102724e-05</td><td>ENSMUSG00000026576/ENSMUSG00000030302/ENSMUSG00000007097/ENSMUSG00000040907</td><td>Atp1b1/Atp2b2/Atp1a2/Atp1a3</td><td>4</td></tr>
+<tr><td>R-MMU-936837</td><td>Ion transport by P-type ATPases</td><td>4/17</td><td>53/8880</td><td>2.54133726893275e-06</td><td>8.04756801828705e-05</td><td>5.6176929102724e-05</td><td>ENSMUSG00000026576/ENSMUSG00000030302/ENSMUSG00000007097/ENSMUSG00000040907</td><td>Atp1b1/Atp2b2/Atp1a2/Atp1a3</td><td>4</td></tr>
+<tr><td>R-MMU-983712</td><td>Ion channel transport</td><td>5/17</td><td>171/8880</td><td>1.281224051422e-05</td><td>0.000304290712212725</td><td>0.000212413461156805</td><td>ENSMUSG00000026576/ENSMUSG00000030302/ENSMUSG00000007097/ENSMUSG00000033379/ENSMUSG00000040907</td><td>Atp1b1/Atp2b2/Atp1a2/Atp6v0b/Atp1a3</td><td>5</td></tr>
+<tr><td>R-MMU-5576891</td><td>Cardiac conduction</td><td>4/17</td><td>114/8880</td><td>5.39013677517281e-05</td><td>0.00102412598728283</td><td>0.000714902351233446</td><td>ENSMUSG00000026576/ENSMUSG00000030302/ENSMUSG00000007097/ENSMUSG00000040907</td><td>Atp1b1/Atp2b2/Atp1a2/Atp1a3</td><td>4</td></tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>
