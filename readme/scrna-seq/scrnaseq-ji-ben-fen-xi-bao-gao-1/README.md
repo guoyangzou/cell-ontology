@@ -20,7 +20,7 @@
 
 ### **2.1 实验流程**
 
-![图1 单细胞转录组实验流程图](<../../.gitbook/assets/image (3).png>)
+![图1 单细胞转录组实验流程图](<../../../.gitbook/assets/image (3).png>)
 
 #### 1）单细胞悬液的制备和质检
 
@@ -40,7 +40,7 @@
 
 ### **2.2 分析流程**
 
-![图2 单细胞转录组生信分析流程图](<../../.gitbook/assets/image (2).png>)
+![图2 单细胞转录组生信分析流程图](<../../../.gitbook/assets/image (2).png>)
 
 ## 3 数据质量评估及表达定量 <a href="#a26" id="a26"></a>
 
@@ -48,7 +48,7 @@
 
 高通量测序下机得到的原始图像文件经 CASAVA 碱基识别转化为测序读段（Sequenced Reads），以 FASTQ 格式存储。FASTQ是一种存储生物序列及相应质量值的常用文本格式，格式如下。10xGenomics测序数据每个样本的数据包含I1，R1，R2。I1存储了index信息；R1即read1，28bp为细胞 barcode 和 UMI信息。R2即read2。使用fastqc软件对每个样本的read2数据做质控分析。
 
-![图3 FASTQ格式文件示意图](../../.gitbook/assets/image.png)
+![图3 FASTQ格式文件示意图](../../../.gitbook/assets/image.png)
 
 该项目各样品数据产出统计见下表：
 
@@ -84,7 +84,7 @@ _样本数量较多时可能会显示不全，建议直接查看BMK\_1\_rawdata/
 
 测序数据及其质量评估结果文件路径：BMK\_1\_rawData/
 
-[测序数据及其质量评估结果文件下载链接](file:///C:/Users/yefei/zougy/Note/%E5%8D%95%E7%BB%86%E8%83%9E%E8%BD%AC%E5%BD%95%E7%BB%84%E4%BC%98%E5%8C%96%E5%90%8E%E6%8A%A5%E5%91%8A/V3/multi\_biomarker\_Web\_Report/BMK\_1\_rawData/)
+测序数据及其质量评估结果文件下载链接
 
 
 
