@@ -2,7 +2,7 @@
 
 ## 2.1 **实验流程** <a href="#2.1-shi-yan-liu-cheng" id="2.1-shi-yan-liu-cheng"></a>
 
-![](https://3672080242-files.gitbook.io/\~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F182kdjhopQDf4Z51a1hd%2Fuploads%2FgNERyekzyw6tfVFnQFsX%2Fimage.png?alt=media\&token=4a02a895-4d1d-4695-8ec3-26b94a503100)图1 单细胞转录组实验流程图
+![图1 单细胞转录组实验流程图](https://3672080242-files.gitbook.io/\~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F182kdjhopQDf4Z51a1hd%2Fuploads%2FgNERyekzyw6tfVFnQFsX%2Fimage.png?alt=media\&token=4a02a895-4d1d-4695-8ec3-26b94a503100)
 
 #### 1）单细胞悬液的制备和质检 <a href="#1-dan-xi-bao-xuan-ye-de-zhi-bei-he-zhi-jian" id="1-dan-xi-bao-xuan-ye-de-zhi-bei-he-zhi-jian"></a>
 
