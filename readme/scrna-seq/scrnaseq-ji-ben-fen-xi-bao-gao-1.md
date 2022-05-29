@@ -40,7 +40,7 @@
 
 ### **2.2 分析流程**
 
-![图2 单细胞转录组生信分析流程图](<../../.gitbook/assets/image (2) (1).png>)
+![图2 单细胞转录组生信分析流程图](<../../.gitbook/assets/image (2) (1) (1).png>)
 
 ## 3 数据质量评估及表达定量 <a href="#a26" id="a26"></a>
 
@@ -185,7 +185,7 @@ Cell Ranger其它分析结果文件路径：BMK\_2\_cellranger\_analysis
 
 _注：每个点表示一个细胞。nGene图：过滤前各个样本单个细胞中检测到的基因数量分布情况；nUMI图：过滤前各个样本单个细胞中检测到的nUMI分布情况；percent.mt图：过滤前各个样本单个细胞中线粒体基因表达量的百分比分布情况。_
 
-![图6 过滤后各样本细胞的小提琴图](<../../.gitbook/assets/image (8).png>)
+![图6 过滤后各样本细胞的小提琴图](<../../.gitbook/assets/image (8) (1).png>)
 
 _注：每个点表示一个细胞。nGene图：过滤后各个样本单个细胞中检测到的基因数量分布情况；nUMI图：过滤后各个样本单个细胞中检测到的nUMI分布情况；percent.mt图：过滤后各个样本单个细胞中线粒体基因表达量的百分比分布情况。_
 
@@ -293,7 +293,7 @@ _Total：总的细胞数，括号内为细胞类型占比。_
 
 All.cell\_annotation\_stat.xls.html
 
-![图12 细胞类型分布统计图](<../../.gitbook/assets/image (7).png>)
+![图12 细胞类型分布统计图](<../../.gitbook/assets/image (7) (1).png>)
 
 _注：横坐标代表不同样本，纵坐标表示对应的细胞数目百分比，不同颜色表示不同的细胞类型_
 
@@ -324,7 +324,7 @@ All.cluster\_annotation\_result.xls.html
 
 ### **4.4 marker基因分析**
 
-### **4.4.1 marker基因筛选**
+#### **4.4.1 marker基因筛选**
 
 基于降维聚类得到的结果，使用非参数检验方法（wilcox秩和检验），鉴定在每个cluster中特异表达的基因，将Fold Change≥ 2 且Thred < 0.1（parameter is: FDR）作为筛选标准，筛选得到每个cluster最显著的差异基因，即marker基因。
 
@@ -360,13 +360,13 @@ All.cluster0.diff\_featuregene.xls.html
 
 通过火山图（Volcano Plot）可查看基因在细胞亚群间的表达水平的差异，以及差异的统计学显著性。各个cluster差异基因火山图展示如下：
 
-![图14 差异表达基因火山图](<../../.gitbook/assets/image (6).png>)
+![图14 差异表达基因火山图](<../../.gitbook/assets/image (6) (1).png>)
 
 _注：差异表达火山图中的每一个点表示一个基因，横坐标表示某一个基因在cluster中表达量差异倍数的对数值；纵坐标表示错误发现率的负对数值。横坐标绝对值越大，说明表达量在两样品间的表达量倍数差异越大；图中灰色的点代表无差异表达的基因，红色的点代表上调基因，蓝色的点代表下调的基因。_
 
 每个cluster差异基因（top10）的表达变化热图展示。
 
-![图15 各cluster差异基因（top10）的表达变化热图](<../../.gitbook/assets/image (9).png>)
+![图15 各cluster差异基因（top10）的表达变化热图](<../../.gitbook/assets/image (9) (1).png>)
 
 _注：红色表示高表达，蓝色表示低表达，顶部注释条表示cluster名。由于cluster之间的top10的差异基因间可能存在重复，因此实际基因数目可能偏小。热图右边特定选取每个cluster的top2的基因进行标出。_
 
@@ -378,15 +378,15 @@ _注：颜色越深表示该基因平均表达值越高，点越大，表达比�
 
 从各个cluster的差异基因中挑选出差异倍数排名前10的基因进行展示。
 
-![图17 Top10 Marker基因的小提琴图](<../../.gitbook/assets/image (13).png>)
+![图17 Top10 Marker基因的小提琴图](<../../.gitbook/assets/image (13) (1).png>)
 
 _注：图中纵坐标代表细胞聚类的 cluster ，横坐标代表基因的表达值。通过该图我们可以很直观的看出 marker 基因在不同的单细胞亚群中的表达量高低分布情况_。
 
-![图18 Top10 Marker基因的t-SNE图](<../../.gitbook/assets/image (11).png>)
+![图18 Top10 Marker基因的t-SNE图](<../../.gitbook/assets/image (11) (1).png>)
 
 _注: top10 marker 基因所有细胞类型中表达值在t-SNE聚类结果中的可视化，每张图中紫色标记的细胞即为特异表达该 marker 基因的细胞类型。_
 
-![图19 Top10 Marker基因的UMAP图](<../../.gitbook/assets/image (2).png>)
+![图19 Top10 Marker基因的UMAP图](<../../.gitbook/assets/image (2) (1).png>)
 
 _注: top10 marker 基因所有细胞类型中表达值在UMAP聚类结果中的可视化，每张图中紫色标记的细胞即为特异表达该 marker 基因的细胞。_
 
@@ -430,7 +430,7 @@ All.cluster0.diff\_featuregene.annotation.xls.html
 
 GO数据库是GO组织（Gene Ontology Consortium）于2000年构建的一个结构化的标准生物学注释系统，旨在建立基因及其产物知识的标准词汇体系，适用于各个物种。GO注释系统是一个有向无环图，包含三个主要分支，即：生物学过程（Biological Process），分子功能（Molecular Function）和细胞组分（Cellular Component）。对每个cluster的差异基因集，采用ClusterProfiler对基因分别进行生物学过程，分子功能和细胞组分的富集分析。富集分析采用超几何检验方法来寻找与整个基因组背景相比显著富集的GO条目。对富集结果得到的Term采用绘制柱状图气泡图等进行可视化。
 
-![图20 差异表达基因富集柱状图](<../../.gitbook/assets/image (10).png>)
+![图20 差异表达基因富集柱状图](<../../.gitbook/assets/image (10) (1).png>)
 
 _注：图中横坐标为对应的GO term,纵坐标为-log10(pvalue)。每个柱子上的数字表示富集到该term的基因数。不同的颜色分别代表GO的三个本体：BP、CC、MF_
 
@@ -444,7 +444,7 @@ _注：差异表达基因与GO term的网络图.边的颜色代表不同的term,
 
 对每个cluster的差异基因进行富集分析，富集到的Term做topGO有向无环图。topGO有向无环图能直观展示差异表达基因富集的GO节点（Term）及其层级关系，是差异表达基因GO富集分析的结果图形化展示，分支代表包含关系，从上至下所定义>的功能描述范围越来越具体。差异表达基因的topGO有向无环图如下:
 
-![图23 GO富集有向无环图](<../../.gitbook/assets/image (4).png>)
+![图23 GO富集有向无环图](<../../.gitbook/assets/image (4) (1).png>)
 
 _注：对每个GO节点进行富集，最显著的10个节点在图中用方框表示，图中还包含其各层对应关系。每个方框（或椭圆）内给出了该GO节点的内容描述和富集显著性值。不同颜色代表不同的富集显著性，颜色越深，显著性越高。_
 
@@ -455,6 +455,139 @@ _注：对每个GO节点进行富集，最显著的10个节点在图中用方框
 在生物体内，不同的基因产物相互协调来行使生物学功能，对差异表达基因的通路（Pathway）注释分析有助于进一步解读基因的功能。KEGG（Kyoto Encyclopedia of Genes and Genomes）是系统分析基因功能、基因组信息数据库，它有助于研究者把基因及表达信息作为一个整体网络进行研究。作为有关Pathway的主要公共数据库(Kanehisa,2008），KEGG提供的整合代谢途径(pathway)查询，包括碳水化合物、核苷、氨基酸等的代谢及有机物的生物降解，不仅提供了所有可能的代谢途径，而且对催化各步反应的酶进行了全面的注解，包含有氨基酸序列、PDB库的链接等等，是进行生物体内代谢分析、代谢网络研究的强有力工具。
 
 对差异表达基因KEGG的注释结果按照KEGG中通路类型进行分类，分类图如下图所示：
+
+![图24 差异表达基因KEGG分类图](<../../.gitbook/assets/image (8).png>)
+
+_注：横坐标为注释到该通路下的基因个数及其个数占被注释上的基因总数的比例，纵坐标为KEGG代谢通路的名称。_
+
+差异表达基因的通路注释结果见下图：
+
+![图25 差异表达基因的KEGG通路注释图](<../../.gitbook/assets/image (6).png>)
+
+_注：红色（绿色）框标记的酶与每个cluster差异高（低）表达基因有关，框内的数字代表酶的编号（EC number），而整个通路由多种酶催化的复杂生化反应构成，此通路图中与差异表达基因相关的酶均用颜色标出，根据研究对象间的差异，重点研究某些代谢通路相关基因的差异表达情况，通过通路解释表型差异的根源。_
+
+分析差异表达基因在某一通路上是否发生显著差异（over-presentation）即为差异表达基因的通路富集分析。Pathway显著性富集分析以KEGG数据库中Pathway为单位，应用超几何检验，找出与整个基因组背景相比，在差异表达基因中显著性富集的Pathway。差异表达基因KEGG通路富集分析结果见下图。
+
+![图26 差异表达基因KEGG富集气泡图](<../../.gitbook/assets/image (9).png>)
+
+_注：图中每一个圆表示一个KEGG通路，横坐标表示通路名称，纵坐标为富集因子（Enrichment Factor），表示差异基因中注释到某通路的基因比例与所有基因中注释到该通路的基因比例的比值。富集因子越大，表示差异表达基因在该通路中的富集水平越显著。圆圈的颜色代表pvalue，pvalue越小，表示差异表达基因在该通路中的富集显著性越可靠；圆圈的大小表示通路中富集的基因数目，圆圈越大，表示基因越多。_
+
+![图27 差异表达基因KEGG富集网络图](<../../.gitbook/assets/image (7).png>)
+
+_注：差异表达基因与KEGG通路的网络图.边的颜色代表不同的通路,基因节点的颜色代表差异倍数,通路节点越大说明富集到该通路的基因数目越多。_
+
+功能富集分析之KEGG分析结果文件路径：BMK\_3\_seurat\_analysis/BMK\_3\_Integrated/BMK\_4\_MarkerGene/BMK\_3\_Anno\_enrichment/All.cluster\*/BMK\_3\_KEGG\_enrichment/
+
+#### **4.4.5 Reactome功能富集分析**
+
+Reactome\[15]是一个免费的、开源的信号和代谢分子的关系数据库。Reactome数据库搜集了人类相关的反应和生物学通路（包含 13,827 个人类反应，分为 2,536 条通路，涉及 11,374 种蛋白质）。典型的生物学通路包括：中间代谢、信号传导、转录调控、细胞凋亡和疾病。富集结果如下表所示。
+
+**表15 Reactome通路富集表**
+
+| ReactomeID    | Description                     | GeneRatio | BgRatio  | pvalue               | p.adjust             | qvalue               | geneID                                                                                                                                                                     | geneSymbol                                                | Count |
+| ------------- | ------------------------------- | --------- | -------- | -------------------- | -------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ----- |
+| R-MMU-382551  | Transport of small molecules    | 9/17      | 653/8880 | 8.46778888659635e-07 | 8.04439944226653e-05 | 5.61548105111126e-05 | ENSMUSG00000002985/ENSMUSG00000026576/ENSMUSG00000030302/ENSMUSG00000027523/ENSMUSG00000032554/ENSMUSG00000017740/ENSMUSG00000007097/ENSMUSG00000033379/ENSMUSG00000040907 | Apoe/Atp1b1/Atp2b2/Gnas/Trf/Slc12a5/Atp1a2/Atp6v0b/Atp1a3 | 9     |
+| R-MMU-5578775 | Ion homeostasis                 | 4/17      | 52/8880  | 2.35230031365502e-06 | 8.04756801828705e-05 | 5.6176929102724e-05  | ENSMUSG00000026576/ENSMUSG00000030302/ENSMUSG00000007097/ENSMUSG00000040907                                                                                                | Atp1b1/Atp2b2/Atp1a2/Atp1a3                               | 4     |
+| R-MMU-936837  | Ion transport by P-type ATPases | 4/17      | 53/8880  | 2.54133726893275e-06 | 8.04756801828705e-05 | 5.6176929102724e-05  | ENSMUSG00000026576/ENSMUSG00000030302/ENSMUSG00000007097/ENSMUSG00000040907                                                                                                | Atp1b1/Atp2b2/Atp1a2/Atp1a3                               | 4     |
+| R-MMU-983712  | Ion channel transport           | 5/17      | 171/8880 | 1.281224051422e-05   | 0.0                  | 0.0                  | ENSMUSG00000026576/ENSMUSG00000030302/ENSMUSG00000007097/ENSMUSG00000033379/ENSMUSG00000040907                                                                             | Atp1b1/Atp2b2/Atp1a2/Atp6v0b/Atp1a3                       | 5     |
+| R-MMU-5576891 | Cardiac conduction              | 4/17      | 114/8880 | 5.39013677517281e-05 | 0.0                  | 0.0                  | ENSMUSG00000026576/ENSMUSG00000030302/ENSMUSG00000007097/ENSMUSG00000040907                                                                                                | Atp1b1/Atp2b2/Atp1a2/Atp1a3                               | 4     |
+
+_注：ReactomeID：Reactome编号；_\
+_Description：Reactome编号对应的功能描述；_\
+_GeneRatio：注释到Reactome编号上的cluster差异高表达基因数与cluster差异高表达基因总数的比值；_\
+_BgRatio：注释到Reactome编号上的背景基因数与背景基因总数的比值；_\
+_pvalue：显著性检验p值；_\
+_padj：校正后的p值；_\
+_geneID：注释到Reactome编号上的基因；_\
+_geneSymbol：注释到Reactome通路编号上的差异基因名称；_\
+_Count：注释到Reactome编号上的基因数。_
+
+All.cluster0\_reactome\_enrich.list.html
+
+对Reactome富集结果得到的通路进行可视化展示，选取最显著的20个通路（如不足20个，则绘制所有）绘制柱状图和气泡图。
+
+![图28 Reactome富集柱状图](<../../.gitbook/assets/image (11).png>)
+
+![图29 Reactome富集气泡图](<../../.gitbook/assets/image (2).png>)
+
+_注：图中每一个圆表示一个Reactome通路，横坐标表示通路名称，纵坐标为GeneRatio。圆圈的颜色代表pvalue，pvalue越小，表示差异表达基因在该通路中的富集显著性越可靠；圆圈的大小表示通路中富集的基因数目，圆圈越大，表示基因越多。_
+
+Reactome分析结果文件路径：BMK\_3\_seurat\_analysis/BMK\_3\_Integrated/BMK\_4\_MarkerGene/BMK\_3\_Anno\_enrichment/All.cluster\*/BMK\_4\_Reactome\_enrichment
+
+#### **4.4.6 差异蛋白调控网络分析**
+
+该分析的目的是研究蛋白-蛋白互作。STRING是收录多个物种预测的和实验验证蛋白质-蛋白质互作的数据库，包括直接的物理互作和间接的功能相关。结合差异表达分析结果和数据库收录的互作关系对，构建差异表达基因互作网络。对于数据库中包含的物种，可直接从数据库中提取出目标基因集的互作关系对构建互作网络；对于数据库中未收录信息的物种，使用BLAST软件，将目的基因与数据库中的蛋白质进行序列比对，寻找同源蛋白，根据同源蛋白的互作关系对构建互作网络。构建完成的蛋白质互作网络可导入Cytoscape软件进行可视化。Cytoscape可视化的差异表达基因蛋白质互作网络如下图：
+
+![图30 差异表达基因蛋白质互作网络图](<../../.gitbook/assets/image (12).png>)
+
+_注：图中的节点为蛋白质，边为互作关系。互作网络中节点(node)的大小与此节点的度(degree)成正比，即与此节点相连的边越多，它的度越大，节点也就越大。节点的颜色代表对应的基因表达量的上下调的趋势，红色代表上调，蓝色代表下调。边(edge)的宽度表示此边连接的两个节点间的互相作用的关系强弱，互相作用的关系越强，边越宽，边的颜色则代表了不同相互作用的类型。没有的组合代表没有互作关系。_
+
+差异表达基因蛋白互作网络结果文件路径：BMK\_3\_seurat\_analysis/BMK\_3\_Integrated/BMK\_4\_MarkerGene/BMK\_4\_PPI/
+
+差异表达基因蛋白互作网络结果文件下载链接（展示一个样本）
+
+#### **4.4.7 转录因子结合位点分析**
+
+转录因子结合位点（Transcription factor binding site，TFBS）是与转录因子结合的DNA片段，长度通常在 5\~20 bp范围内，一个转录因子往往同时调控若干个基因，而它在不同基因上的结合位点具有一定的保守性，又不完全相同。我们用R包TFBStools对差异基因的启动子区域（定义基因上游１kb 左右为潜在的启动子区）上的 TFBS 进行了预测，参考的转录因子motif数据库是JASPAR数据库（http://jaspar.genereg.net/）。预测结果如下表：
+
+**表16 转录因子结合位点预测结果**
+
+| Model\_id  | seqname            | start | end | score | strand | Attributes                                                               | Pvalue |
+| ---------- | ------------------ | ----- | --- | ----- | ------ | ------------------------------------------------------------------------ | ------ |
+| MA0006.1.1 | ENSMUSG00000000740 | 746   | 751 | 1     | +      | TF=Ahr::Arnt;class=Basic helix-loop-helix factors (bHLH);sequence=TGCGTG | 0      |
+| MA0006.1.2 | ENSMUSG00000000740 | 973   | 978 | 0.99  | +      | TF=Ahr::Arnt;class=Basic helix-loop-helix factors (bHLH);sequence=CGCGTG | 0.0    |
+| MA0035.1.1 | ENSMUSG00000000740 | 93    | 98  | 0.97  | +      | TF=Gata1;class=Other C4 zinc finger-type factors;sequence=TGATGC         | 0.0    |
+| MA0035.1.2 | ENSMUSG00000000740 | 242   | 247 | 0.93  | +      | TF=Gata1;class=Other C4 zinc finger-type factors;sequence=AGATGA         | 0.01   |
+| MA0035.1.3 | ENSMUSG00000000740 | 266   | 271 | 0.91  | +      | TF=Gata1;class=Other C4 zinc finger-type factors;sequence=TGATAT         | 0.01   |
+
+_注：Model\_id：转录因子结合位点模体id；_\
+_seqname：基因名称；_\
+_start：开始位置；_\
+_end：结束位置；_\
+_score：评分，评分越高，表示该转录因子与输入序列结合的可能性越大；_\
+_strand：链方向, + 表示正链，- 表示负链；_\
+_Attributes：注释信息。TF：转录因子id；class：转录因子注释；sequence：TFBS序列；_\
+_Pvalue：P值。_
+
+allGenes\_TFBS\_predictRes.xls.html
+
+TFBS序列特征示例图如下：
+
+![图31 TFBS序列特征图](<../../.gitbook/assets/image (13).png>)
+
+注：横坐标为 motif 中碱基的相对位置，纵坐标为该位置碱基的序列保守性，而碱基信号的高度代表该碱基在该位置上的相对频率。
+
+转录因子结合位点预测结果文件路径：BMK\_3\_seurat\_analysis/BMK\_3\_Integrated/BMK\_4\_MarkerGene/BMK\_5\_TF\_analysis/TFBS\_Analysis/
+
+转录因子结合位点预测结果文件下载链接（展示一个样本）
+
+## 5 组间差异表达分析 <a href="#a162" id="a162"></a>
+
+为了比较同一种细胞亚型在不同样品之间的差异情况，对同一cluster中的不同分组进行组间差异分析。差异分析结果如下表所示：
+
+### **5.1 差异表达基因分析**
+
+相同Cluster不同样品间的差异分析结果文件路径：BMK\_3\_seurat\_analysis/BMK\_3\_Integrated/BMK\_5\_Group\_Anlysis
+
+**表17 差异结果统计表**
+
+| Groups | deg\_group | cluster0 | cluster1 | cluster2 | cluster3 | cluster4 | cluster5 | cluster6 | cluster7 | cluster8 | cluster9 | cluster10 | cluster11 |
+| ------ | ---------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | --------- | --------- |
+| group1 | M1\_vs\_M2 | 1        | 5        | 2        | 12       | 4        | 11       | 2        | 103      | 4        | 2        | 4         | 1         |
+
+利用热图展示组间TOP10的差异基因在分组中的表达分布模式。
+
+![图32 top10的差异基因在各样本的表达热图](<../../.gitbook/assets/image (4).png>)
+
+_注：将数据按照各亚群各个分组分开，图片展示了某差异分组(A\_vs\_B)在所有亚群中的差异情况。行表示基因（每个亚群选取top10），列表示各细胞亚群。_
+
+#### **5.1.1 top差异基因展示**
+
+利用小提琴图、t-SNE图和UMAP图展示组间TOP2的差异基因在比较组中的表达分布情况。
+
+![图33 Top2 Marker基因的小提琴图](<../../.gitbook/assets/image (10).png>)
+
+注：展示cluster的top2的 marker 基因在不同样本间的表达分布。不同样本用不同颜色表示，横轴标出样本名，纵轴表示基因在对应cluster中的表达。
 
 
 
