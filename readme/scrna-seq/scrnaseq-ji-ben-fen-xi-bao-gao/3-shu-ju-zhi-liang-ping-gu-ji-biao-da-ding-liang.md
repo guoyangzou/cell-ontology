@@ -1,6 +1,6 @@
-# 数据质量评估及表达定量
+# 3 数据质量评估及表达定量
 
-## **测序数据质量评估**
+## 3.1 **测序数据质量评估**
 
 高通量测序下机得到的原始图像文件经 CASAVA 碱基识别转化为测序读段（Sequenced Reads），以 FASTQ 格式存储。FASTQ是一种存储生物序列及相应质量值的常用文本格式，格式如下。10xGenomics测序数据每个样本的数据包含I1，R1，R2。I1存储了index信息；R1即read1，28bp为细胞 barcode 和 UMI信息。R2即read2。使用fastqc软件对每个样本的read2数据做质控分析。
 
@@ -42,7 +42,7 @@ _样本数量较多时可能会显示不全，建议直接查看BMK\_1\_rawdata/
 
 测序数据及其质量评估结果文件下载链接
 
-## **测序数据统计**
+## **3.2 测序数据统计**
 
 利用Cell Ranger\[1]进一步对测序数据进行统计分析，CellRanger分析结果网页版报告链接如下:
 
@@ -68,7 +68,7 @@ _Q30 Bases in Barcode：Barcode序列中质量值大于或等于30的碱基所�
 _Q30 Bases in RNA Read：reads中质量值大于或等于30的碱基所占的百分比；_\
 _Q30 Bases in UMI：UMI序列中质量值大于或等于30的碱基所占的百分比。_
 
-## **比对分析**
+## **3.3 比对分析**
 
 Cell Ranger调用STAR\[2]软件将Read2比对到参考基因组上，基于STAR的比对结果，结合参考数据集（gtf／gff文件）里的信息，统计基因组上各个区域的reads覆盖信息，可以得到比对到外显子、内含子、基因间区的比例信息，作为数据质控的参考指标。将reads既比对到已知转录本的外显子上又在同一条链上的作为比对到转录本上的依据，如果该reads比对到已知的单个基因上，将reads称为唯一比对到转录组上，只有比对到转录本上的reads才能作为UMI计数。STAR是一款RNA-Seq数据分析常用的分段比对工具，可以用来发现外显子的连接以及融合现象，其基本工作原理主要分成两步：种子序列的寻找，以及聚类／连接／打分。下图为其原理示意图：
 
@@ -95,7 +95,7 @@ _Reads Mapped Antisense to Gene：比对到基因反义链的Reads在总Reads中
 _Reads Mapped Confidently to Transcriptome：比对到已知参考转录本的Reads在总Reads中占的百分比；_\
 _Fraction Reads in Cells：比对到参考基因且来源于高质量细胞的Reads在总Reads中占的百分比。_
 
-## **细胞鉴定及基因表达定量**
+## **3.4 细胞鉴定及基因表达定量**
 
 Cell Ranger对每个Barcode的每个基因会去除重复的UMI，统计unique UMI数目作为该细胞内该基因的表达量，通过UMI可以区分一条read是否属于生物学重复还是技术重复，能够有效地去除PCR效应。CellRanger分析细胞统计如下表：
 

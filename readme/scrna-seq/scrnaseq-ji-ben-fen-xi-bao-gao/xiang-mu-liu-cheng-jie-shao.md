@@ -1,6 +1,6 @@
-# 项目流程介绍
+# 2 项目流程介绍
 
-## **实验流程** <a href="#2.1-shi-yan-liu-cheng" id="2.1-shi-yan-liu-cheng"></a>
+## 2.1 **实验流程** <a href="#2.1-shi-yan-liu-cheng" id="2.1-shi-yan-liu-cheng"></a>
 
 ![](https://3672080242-files.gitbook.io/\~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F182kdjhopQDf4Z51a1hd%2Fuploads%2FgNERyekzyw6tfVFnQFsX%2Fimage.png?alt=media\&token=4a02a895-4d1d-4695-8ec3-26b94a503100)图1 单细胞转录组实验流程图
 
@@ -20,6 +20,6 @@
 
 选择适量的 cDNA 进行文库构建，文库构建基本包括片段化、末端修复和加 A尾，接头连接和 Index 扩增等基本步骤，利用 qubit 4.0对文库浓度进行质控，Qseq400对文库的片段进行质控；库检合格后，使用二代测序平台进行测序。
 
-## **分析流程** <a href="#2.2-fen-xi-liu-cheng" id="2.2-fen-xi-liu-cheng"></a>
+## **2.2 分析流程** <a href="#2.2-fen-xi-liu-cheng" id="2.2-fen-xi-liu-cheng"></a>
 
 ![单细胞转录组生信分析流程图](../../../.gitbook/assets/企业微信截图\_16536460416984.png)
