@@ -20,7 +20,7 @@
 
 ### **2.1 实验流程**
 
-![图1 单细胞转录组实验流程图](<../../.gitbook/assets/image (2).png>)
+![图1 单细胞转录组实验流程图](<../../.gitbook/assets/image (1) (1) (1).png>)
 
 #### 1）单细胞悬液的制备和质检
 
@@ -40,7 +40,7 @@
 
 ### **2.2 分析流程**
 
-![图2 单细胞转录组生信分析流程图](<../../.gitbook/assets/image (4).png>)
+![图2 单细胞转录组生信分析流程图](<../../.gitbook/assets/image (2) (1).png>)
 
 ## 3 数据质量评估及表达定量 <a href="#a26" id="a26"></a>
 
@@ -48,7 +48,7 @@
 
 高通量测序下机得到的原始图像文件经 CASAVA 碱基识别转化为测序读段（Sequenced Reads），以 FASTQ 格式存储。FASTQ是一种存储生物序列及相应质量值的常用文本格式，格式如下。10xGenomics测序数据每个样本的数据包含I1，R1，R2。I1存储了index信息；R1即read1，28bp为细胞 barcode 和 UMI信息。R2即read2。使用fastqc软件对每个样本的read2数据做质控分析。
 
-![图3 FASTQ格式文件示意图](../../.gitbook/assets/fastq.png)
+![图3 FASTQ格式文件示意图](<../../.gitbook/assets/fastq (1).png>)
 
 该项目各样品数据产出统计见下表：
 
@@ -116,7 +116,7 @@ _Q30 Bases in UMI：UMI序列中质量值大于或等于30的碱基所占的百�
 
 Cell Ranger调用STAR\[2]软件将Read2比对到参考基因组上，基于STAR的比对结果，结合参考数据集（gtf／gff文件）里的信息，统计基因组上各个区域的reads覆盖信息，可以得到比对到外显子、内含子、基因间区的比例信息，作为数据质控的参考指标。将reads既比对到已知转录本的外显子上又在同一条链上的作为比对到转录本上的依据，如果该reads比对到已知的单个基因上，将reads称为唯一比对到转录组上，只有比对到转录本上的reads才能作为UMI计数。STAR是一款RNA-Seq数据分析常用的分段比对工具，可以用来发现外显子的连接以及融合现象，其基本工作原理主要分成两步：种子序列的寻找，以及聚类／连接／打分。下图为其原理示意图：
 
-![图4 STAR 比对原理](../../.gitbook/assets/image.png)
+![图4 STAR 比对原理](<../../.gitbook/assets/image (5).png>)
 
 _注：最大可比对标签（Maximum Mappable Prefix, MMP）的寻找用于发现（a）外显子连接处，（b）错配，（c）多聚 A 尾， 或者接头，或者低质量尾。_
 
@@ -181,10 +181,308 @@ Cell Ranger其它分析结果文件路径：BMK\_2\_cellranger\_analysis
 
 统计过滤前后各个样本细胞的nGene（number of Gene），nUMI（number of UMI）和percent.mt（线粒体基因）占比，结果如下图所示：
 
-[https://docs.google.com/presentation/d/1ol2DnIDbbFEIMgoSvCGkLALpJNY4D0CngDpZdmNlklQ/edit#slide=id.p](https://docs.google.com/presentation/d/1ol2DnIDbbFEIMgoSvCGkLALpJNY4D0CngDpZdmNlklQ/edit#slide=id.p)\
+![图5 过滤前各样本细胞的小提琴图](<../../.gitbook/assets/image (3) (1).png>)
+
+_注：每个点表示一个细胞。nGene图：过滤前各个样本单个细胞中检测到的基因数量分布情况；nUMI图：过滤前各个样本单个细胞中检测到的nUMI分布情况；percent.mt图：过滤前各个样本单个细胞中线粒体基因表达量的百分比分布情况。_
+
+![图6 过滤后各样本细胞的小提琴图](<../../.gitbook/assets/image (8).png>)
+
+_注：每个点表示一个细胞。nGene图：过滤后各个样本单个细胞中检测到的基因数量分布情况；nUMI图：过滤后各个样本单个细胞中检测到的nUMI分布情况；percent.mt图：过滤后各个样本单个细胞中线粒体基因表达量的百分比分布情况。_
+
+细胞中基因表达数目与UMI数目呈现正相关，细胞中检测到的UMI数目越多，表达的基因数目越多。线粒体基因与UMI数目没有明显的相关性。过滤前后相关性分析散点图如下所示：
+
+![图7 过滤前各样本细胞的散点图](../../.gitbook/assets/image.png)
+
+_注：每个点表示一个细胞，图上方为相关性系数。左图表示细胞中检测到的UMI数目和线粒体基因含量的关系；右图表示细胞中检测到的UMI数目和表达基因数目的关系。_
+
+![图8 过滤后各样本细胞的散点图](<../../.gitbook/assets/image (14).png>)
+
+_注：每个点表示一个细胞，图上方为相关性系数。左图表示细胞中检测到的UMI数目和线粒体基因含量的关系；右图表示细胞中检测到的UMI数目和表达基因数目的关系。_
+
+**表8 细胞过滤统计表**
+
+| Sample | All\_cells\_number | filter by Mitochondria | filter by UMI | filter by minimal gene expression | filter by maximum gene expression | Final\_cells\_number | percent(%) |
+| ------ | ------------------ | ---------------------- | ------------- | --------------------------------- | --------------------------------- | -------------------- | ---------- |
+| M1     | 6,882              | 1                      | 0             | 1,190                             | 0                                 | 5,691                | 82.69      |
+| M2     | 6,567              | 0                      | 0             | 1,137                             | 2                                 | 5,428                | 82.66      |
+
+_注：Sample:样本名；_\
+_All\_cells\_number：过滤前的所有细胞数目；_\
+_filter by Mitochondria：根据细胞中线粒体最大比例过滤掉的细胞数目；_\
+_filter by UMI：根据细胞中最少的UMI数过滤掉的细胞数目；_\
+_filter by minimal gene expression：根据细胞中最少的Gene数过滤掉的细胞数；_\
+_filter by maximum gene expression：根据细胞中最多的Gene数过滤掉的细胞数；_\
+_Final\_cells\_number：过滤后最终剩余的细胞数；_\
+_percent(%)：剩余细胞的百分比(100%)。_
+
+细胞过滤结果文件路径：BMK\_3\_seurat\_analysis/BMK\_1\_CellsFilter/
+
+细胞过滤结果文件下载链接
+
+### **4.2 细胞聚类分析**
+
+多个样本需要对数据合并后再进行后续分析，可以选择是否去除批次效应，来处理样品在不同批次中产生的与生物复杂性无关的差异。利用seurat软件对所有样本数据进行批次效应校正，校正原理是将CCA（anonical Correspondence Analysis）与MNN（Mutual Nearest Neighbors）算法结合起来，认为相同类型和状态的细胞它们之间的基因表达差异是技术偏倚引起的，通过计算并校正技术偏倚引起的基因表达差值，从而实现不同单细胞数据集的整合。
+
+单细胞转录组定量表达数据是一个M\*N的矩阵（行是基因，列是细胞），对这样的矩阵聚类计算量极大。因此在对细胞进行聚类之前，Seurat使用PCA方法对数据进行降维，PCA降维是一种线性降维方法，运用方差分解，将高维的数据映射到低维的空间中；然后基于SNN聚类算法对细胞进行聚类和分群，构建细胞间的聚类关系；最后将降维后的数据传递到t-SNE与UMAP进行可视化展示，细胞之间的基因表达模式越相似，在t-SNE/UMAP图中的距离也越接近。
+
+单样本细胞聚类及后续分析结果文件路径：BMK\_3\_seurat\_analysis/BMK\_2\_SingleAnalysis
+
+单样本细胞聚类及后续分析结果文件下载链接
+
+#### **4.2.1 多样本的Cluster分布统计**
+
+基于多样本的聚类结果,统计不同cluster中各样本的占比情况。如下图所示：
+
+![图9 多样本的Cluster分布柱状图](<../../.gitbook/assets/image (3).png>)
+
+_注：左图横坐标表示相同cluster里面不同样本的细胞数百分比，不同颜色表示不同的样本；右图横坐标表示所有样本在每个cluster里面的细胞总个数分布情况。纵坐标表示不同的cluster。_
+
+**表9 多样本的Cluster统计表**
+
+| cluster   | M1    | M2    | total  |
+| --------- | ----- | ----- | ------ |
+| cluster0  | 1,449 | 1,476 | 2,925  |
+| cluster1  | 1,686 | 1,148 | 2,834  |
+| cluster2  | 538   | 609   | 1,147  |
+| cluster3  | 198   | 805   | 1,003  |
+| cluster4  | 645   | 169   | 814    |
+| cluster5  | 500   | 312   | 812    |
+| cluster6  | 183   | 239   | 422    |
+| cluster7  | 43    | 355   | 398    |
+| cluster8  | 248   | 57    | 305    |
+| cluster9  | 127   | 61    | 188    |
+| cluster10 | 53    | 131   | 184    |
+| cluster11 | 21    | 66    | 87     |
+| total     | 5,691 | 5,428 | 11,119 |
+
+#### **4.2.2 聚类结果可视化**
+
+将聚类得到的结果使用t-SNE和UMAP进行可视化展示。
+
+![图10 所有样本细胞聚类的t-SNE图](<../../.gitbook/assets/image (17).png>)
+
+_注：tsne\_all.png：所有cluster的t-SNE图，不同颜色表示不同的cluster； tsne\_sample.png：所有样本的t-SNE图，不同颜色表示不同的样本； tsne\_splt.png：不同的cluster在不同样本中的情况。_
+
+多样本的Cluster分布统计结果文件路径：BMK\_3\_seurat\_analysis/BMK\_3\_Integrated/BMK\_3\_Cluster
+
+多样本的Cluster分布统计结果文件路径
+
+### **4.3 细胞亚群注释**
+
+细胞聚类分析是根据细胞之间的相似性，将相似度最高的一群细胞识别为一个亚群，但是得到的细胞亚群并没有生物学意义。细胞注释主要有两种方法，1)基于参考数据库利用软件工具进行自动化；2)基于参考数据库、文献资料确定已知细胞类型的特征表达基因(marker标记)列表和相关通路进行人工注释。SingleR\[7]是基于斯皮尔曼相关性，对scRNA-seq数据实现自动化注释的一个软件，百迈客使用SingleR对细胞类群进行自动注释（只针对人、小鼠）。
+
+注：细胞类型鉴定的过程即复杂又繁琐，自动注释只能提供一个参考，细胞注释要同时结合自动化注释和人工注释，这两种方法并不是独立割裂开来的，需要搭配使用，软件自动化细胞注释方法方便且系统化，完全依赖于参考数据集，注释的结果有时也并不是高置信度注释。在百迈客提供的数据库自动注释的基础上，后续可根据已发表的文章（物种、疾病、组织检索）或者cell marker数据库进行进一步的人工注释校正，可大大提高注释的准确度。
+
+细胞类型注释统计表文件路径：BMK\_3\_seurat\_analysis/BMK\_3\_Integrated/BMK\_6\_cellAnnotation/All.cell\_annotation\_stat.xls
+
+**表10 样本细胞类型注释统计表**
+
+| Cell Type         | M1            | M2            | Total         |
+| ----------------- | ------------- | ------------- | ------------- |
+| Astrocytes        | 500(8.79%)    | 312(5.75%)    | 812(7.3%)     |
+| Endothelial cells | 127(2.23%)    | 61(1.12%)     | 188(1.69%)    |
+| Epithelial cells  | 53(0.93%)     | 131(2.41%)    | 184(1.65%)    |
+| Fibroblasts       | 893(15.69%)   | 226(4.16%)    | 1,119(10.06%) |
+| Neurons           | 1,987(34.91%) | 2,085(38.41%) | 4,072(36.62%) |
+| Oligodendrocytes  | 2,131(37.45%) | 2,613(48.14%) | 4,744(42.67%) |
+| Total             | 5,691         | 5,428         | 11,119        |
+
+_注：Cell Type：注释得到的细胞类型；_\
+_第二列至倒数第二列：该样本中属该细胞类型的细胞数目，括号内为细胞类型占比；_\
+_Total：总的细胞数，括号内为细胞类型占比。_
+
+All.cell\_annotation\_stat.xls.html
+
+![图12 细胞类型分布统计图](<../../.gitbook/assets/image (7).png>)
+
+_注：横坐标代表不同样本，纵坐标表示对应的细胞数目百分比，不同颜色表示不同的细胞类型_
+
+**表11 样本细胞类型Cluster统计表**
+
+| Cell Type         | Cluster                          |
+| ----------------- | -------------------------------- |
+| Astrocytes        | Cluster5(100.0%)                 |
+| Endothelial cells | Cluster9(100.0%)                 |
+| Epithelial cells  | Cluster10(100.0%)                |
+| Fibroblasts       | Cluster4(72.7%); Cluster8(27.3%) |
+| Neurons           | Cluster0(71.8%); Cluster2(28.2%) |
+
+_注：Cell Type：注释得到的细胞类型；_\
+_Cluster：Cluster细胞数占该细胞类型细胞数的比例。_
+
+All.cluster\_annotation\_result.xls.html
+
+![图13 细胞类型鉴定TNSE/UMAP图](<../../.gitbook/assets/image (20).png>)
+
+多样本整合后的细胞亚群的类型鉴定结果文件路径：BMK\_3\_seurat\_analysis/BMK\_3\_Integrated/BMK\_\*\_cellAnnotation/
+
+多样本整合后的细胞亚群的类型鉴定结果文件下载链接
+
+多样本整合后的细胞亚群的类型鉴定结果文件路径（其它注释数据库）：BMK\_3\_seurat\_analysis/OtherAnnoDatabase/
+
+多样本整合后的细胞亚群的类型鉴定结果文件下载链接（其它注释数据库）
+
+### **4.4 marker基因分析**
+
+### **4.4.1 marker基因筛选**
+
+基于降维聚类得到的结果，使用非参数检验方法（wilcox秩和检验），鉴定在每个cluster中特异表达的基因，将Fold Change≥ 2 且Thred < 0.1（parameter is: FDR）作为筛选标准，筛选得到每个cluster最显著的差异基因，即marker基因。
+
+细胞亚群间的差异分析结果文件路径：BMK\_3\_seurat\_analysis/BMK\_3\_Integrated/BMK\_4\_MarkerGene
+
+**表12 差异基因数目统计**
+
+| cluster     | cluster0 | cluster1 | cluster2 | cluster3 | cluster4 | cluster5 | cluster6 | cluster7 | cluster8 | cluster9 | cluster10 | cluster11 |
+| ----------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | --------- | --------- |
+| deg\_number | 41       | 31       | 21       | 26       | 31       | 33       | 15       | 203      | 28       | 24       | 17        | 35        |
+
+**表13 cluster的Marker基因**
+
+| ID                 | symbol | Pvalue | log2FC | pct.1 | pct.2 | Qvalue | clsuterName | cluster0\_count | cluster1\_count | cluster2\_count | cluster3\_count | cluster4\_count | cluster5\_count | cluster6\_count | cluster7\_count | cluster8\_count | cluster9\_count | cluster10\_count | cluster11\_count |
+| ------------------ | ------ | ------ | ------ | ----- | ----- | ------ | ----------- | --------------- | --------------- | --------------- | --------------- | --------------- | --------------- | --------------- | --------------- | --------------- | --------------- | ---------------- | ---------------- |
+| ENSMUSG00000021268 | Meg3   | 0      | 2.78   | 0.99  | 0.42  | 0      | cluster0    | 31.17           | 0.64            | 16.27           | 2.89            | 1.89            | 1.92            | 2.36            | 1.21            | 2.42            | 3.88            | 3.93             | 1.47             |
+| ENSMUSG00000044349 | Snhg11 | 0      | 2.66   | 0.99  | 0.42  | 0      | cluster0    | 36.26           | 0.74            | 23.19           | 3.57            | 2.35            | 2.1             | 2.68            | 1.29            | 2.82            | 4.64            | 3.4              | 1.32             |
+| ENSMUSG00000025326 | Ube3a  | 0      | 1.69   | 0.89  | 0.36  | 0      | cluster0    | 4.45            | 0.32            | 1.98            | 0.73            | 0.55            | 0.52            | 0.62            | 0.37            | 0.54            | 0.73            | 0.65             | 0.47             |
+| ENSMUSG00000019986 | Ahi1   | 0      | 1.65   | 0.92  | 0.37  | 0      | cluster0    | 4.91            | 0.33            | 2.99            | 0.67            | 0.52            | 0.63            | 1.07            | 0.53            | 0.58            | 0.77            | 1.24             | 0.78             |
+| ENSMUSG00000026576 | Atp1b1 | 0      | 1.57   | 0.76  | 0.23  | 0      | cluster0    | 3.55            | 0.18            | 1.68            | 0.31            | 0.29            | 0.46            | 0.32            | 0.3             | 1.84            | 0.55            | 0.31             | 0.3              |
+
+_注:ID:基因ID；_\
+_symbol:基因symbol；_\
+_Pvalue:显著性p值；_\
+_log2FC:差异倍数的log2值；_\
+_pct.1:基因在cluster(i) 中有表达的细胞比例；_\
+_pct.2:基因在除了cluster(i)中以外所有的cluster中有表达的细胞比例；_\
+_Qvalue:校正后的p值；_\
+_clusterName：差异基因的clustercluster；_\
+_N\_count：差异基因在clusterN的单个细胞reads数平均值。_
+
+All.cluster0.diff\_featuregene.xls.html
+
+通过火山图（Volcano Plot）可查看基因在细胞亚群间的表达水平的差异，以及差异的统计学显著性。各个cluster差异基因火山图展示如下：
+
+![图14 差异表达基因火山图](<../../.gitbook/assets/image (6).png>)
+
+_注：差异表达火山图中的每一个点表示一个基因，横坐标表示某一个基因在cluster中表达量差异倍数的对数值；纵坐标表示错误发现率的负对数值。横坐标绝对值越大，说明表达量在两样品间的表达量倍数差异越大；图中灰色的点代表无差异表达的基因，红色的点代表上调基因，蓝色的点代表下调的基因。_
+
+每个cluster差异基因（top10）的表达变化热图展示。
+
+![图15 各cluster差异基因（top10）的表达变化热图](<../../.gitbook/assets/image (9).png>)
+
+_注：红色表示高表达，蓝色表示低表达，顶部注释条表示cluster名。由于cluster之间的top10的差异基因间可能存在重复，因此实际基因数目可能偏小。热图右边特定选取每个cluster的top2的基因进行标出。_
+
+每个cluster差异基因（top2）的气泡图展示。
+
+![图16 各cluster差异基因（top2）的气泡图](<../../.gitbook/assets/image (18).png>)
+
+_注：颜色越深表示该基因平均表达值越高，点越大，表达比例越大。由于cluster之间的top2的差异基因间可能存在重复，因此实际基因数目可能偏小。_
+
+从各个cluster的差异基因中挑选出差异倍数排名前10的基因进行展示。
+
+![图17 Top10 Marker基因的小提琴图](<../../.gitbook/assets/image (13).png>)
+
+_注：图中纵坐标代表细胞聚类的 cluster ，横坐标代表基因的表达值。通过该图我们可以很直观的看出 marker 基因在不同的单细胞亚群中的表达量高低分布情况_。
+
+![图18 Top10 Marker基因的t-SNE图](<../../.gitbook/assets/image (11).png>)
+
+_注: top10 marker 基因所有细胞类型中表达值在t-SNE聚类结果中的可视化，每张图中紫色标记的细胞即为特异表达该 marker 基因的细胞类型。_
+
+![图19 Top10 Marker基因的UMAP图](<../../.gitbook/assets/image (2).png>)
+
+_注: top10 marker 基因所有细胞类型中表达值在UMAP聚类结果中的可视化，每张图中紫色标记的细胞即为特异表达该 marker 基因的细胞。_
+
+top marker基因展示结果文件路径：BMK\_3\_seurat\_analysis/BMK\_3\_Integrated/BMK\_4\_MarkerGene/BMK\_2\_top10\_marker
+
+top marker基因展示结果文件下载链接
+
+#### **4.4.2 marker基因注释**
+
+将得到的差异基因与NR\[8]，Swiss-Prot\[9]，GO\[10]，COG\[11]，KOG\[12]，Pfam\[13]，KEGG\[14]，Reactome\[15]数据库进行序列比对，得到基因的注释信息。
+
+**表14 差异表达基因注释文件**
+
+| ID                 | symbol      | Pvalue | log2FC | pct.1 | pct.2 | Qvalue | clsuterName | cluster0\_count | cluster1\_count | cluster2\_count | cluster3\_count | cluster4\_count | cluster5\_count | cluster6\_count | cluster7\_count | cluster8\_count | cluster9\_count | cluster10\_count | cluster11\_count | COG\_class | COG\_class\_annotation                 | GO\_annotation                                                                                                                                                                                                                                                                                                                                       | KEGG\_annotation                                                                                                                                                                                        | KEGG\_pathway\_annotation                                                                                                                                                                                                        | KOG\_class | KOG\_class\_annotation                 | Pfam\_annotation                                                                                                                                                                                                                                                       | Swiss-Prot\_annotation                                                                     | eggNOG\_class | eggNOG\_class\_annotation                                    | NR\_annotation                                                                        |
+| ------------------ | ----------- | ------ | ------ | ----- | ----- | ------ | ----------- | --------------- | --------------- | --------------- | --------------- | --------------- | --------------- | --------------- | --------------- | --------------- | --------------- | ---------------- | ---------------- | ---------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| ENSMUSG00000097545 | Mir124a-1hg | 0      | 1.16   | 0.66  | 0.12  | 0      | cluster0    | 1.77            | 0.04            | 1.14            | 0.16            | 0.11            | 0.12            | 0.27            | 0.03            | 0.18            | 0.21            | 0.13             | 0.07             | --         | --                                     | --                                                                                                                                                                                                                                                                                                                                                   | --                                                                                                                                                                                                      | --                                                                                                                                                                                                                               | --         | --                                     | --                                                                                                                                                                                                                                                                     | --                                                                                         | --            | --                                                           | --                                                                                    |
+| ENSMUSG00000033061 | Resp18      | 0      | 1.24   | 0.61  | 0.16  | 0      | cluster0    | 2.17            | 0.08            | 1.52            | 0.21            | 0.17            | 0.22            | 0.23            | 0.14            | 0.25            | 0.46            | 0.16             | 0.14             | --         | --                                     | Biological Process: in utero embryonic development (GO:0001701);; Cellular Component: extracellular region (GO:0005576);; Cellular Component: Golgi apparatus (GO:0005794);; Cellular Component: secretory granule (GO:0030141);; Cellular Component: perikaryon (GO:0043204);; Cellular Component: rough endoplasmic reticulum lumen (GO:0048237);; | --                                                                                                                                                                                                      | --                                                                                                                                                                                                                               | --         | --                                     | RESP18 domain                                                                                                                                                                                                                                                          | Regulated endocrine-specific protein 18 OS=Mus musculus OX=10090 GN=Resp18 PE=2 SV=1       | O             | Posttranslational modification, protein turnover, chaperones | regulated endocrine-specific protein 18 precursor \[Mus musculus]                     |
+| ENSMUSG00000097451 | Rian        | 0      | 1.5    | 0.85  | 0.2   | 0      | cluster0    | 3.01            | 0.08            | 1.84            | 0.27            | 0.28            | 0.21            | 0.29            | 0.15            | 0.23            | 0.45            | 0.41             | 0.21             | --         | --                                     | --                                                                                                                                                                                                                                                                                                                                                   | --                                                                                                                                                                                                      | --                                                                                                                                                                                                                               | --         | --                                     | --                                                                                                                                                                                                                                                                     | --                                                                                         | --            | --                                                           | --                                                                                    |
+| ENSMUSG00000030302 | Atp2b2      | 0      | 1.07   | 0.62  | 0.13  | 0      | cluster0    | 1.52            | 0.06            | 0.63            | 0.13            | 0.09            | 0.33            | 0.3             | 0.08            | 0.08            | 0.26            | 0.13             | 0.05             | \[P]       | Inorganic ion transport and metabolism | --                                                                                                                                                                                                                                                                                                                                                   | K05850\|0\|mmu:11941\|K05850 Ca2+ transporting ATPase, plasma membrane \[EC:3.6.3.8] \| (RefSeq) Atp2b2, D6Abb2e, Gena300, PMCA2, Tmy, dfw, jog, wms, wri; ATPase, Ca++ transporting, plasma membrane 2 | Calcium signaling pathway (ko04020);; cGMP-PKG signaling pathway (ko04022);; cAMP signaling pathway (ko04024);; Adrenergic signaling in cardiomyocytes (ko04261);; Salivary secretion (ko04970);; Pancreatic secretion (ko04972) | \[P]       | Inorganic ion transport and metabolism | Cation transporting ATPase, C-terminus;; E1-E2 ATPase;; Plasma membrane calcium transporter ATPase C terminal;; Cation transport ATPase (P-type);; haloacid dehalogenase-like hydrolase;; Cation transporter/ATPase, N-terminus;; haloacid dehalogenase-like hydrolase | Plasma membrane calcium-transporting ATPase 2 OS=Mus musculus OX=10090 GN=Atp2b2 PE=1 SV=2 | P             | Inorganic ion transport and metabolism                       | ATPase, Ca++ transporting, plasma membrane 2, isoform CRA\_b, partial \[Mus musculus] |
+| ENSMUSG00000115783 | Bc1         | 0      | 1.25   | 0.72  | 0.22  | 0      | cluster0    | 2.32            | 0.16            | 1.3             | 0.28            | 0.24            | 0.32            | 0.27            | 0.56            | 0.25            | 0.37            | 0.23             | 0.21             | --         | --                                     | --                                                                                                                                                                                                                                                                                                                                                   | --                                                                                                                                                                                                      | --                                                                                                                                                                                                                               | --         | --                                     | --                                                                                                                                                                                                                                                                     | --                                                                                         | --            | --                                                           | --                                                                                    |
+
+_注:网页版只展示前6行。_\
+_ID:基因ID；_\
+_symbol:基因symbol；_\
+_Pvalue:显著性p值；_\
+_log2FC:差异倍数的log2值；_\
+_pct.1:基因在cluster(i) 中有表达的细胞比例；_\
+_pct.2:基因在除了cluster(i)中以外所有的cluster中有表达的细胞比例；_\
+_Qvalue:校正后的p值；_\
+_clusterName：差异基因的cluster；_\
+_clusterN\_count：差异基因在clusterN的单个细胞reads数平均值；_\
+_其余列:COG，GO，KEGG，KOG，Pfam，Swiss-Prot，eggNOG，NR数据库对应的注释信息。_
+
+All.cluster0.diff\_featuregene.annotation.xls.html
+
+差异表达基因注释结果文件路径：BMK\_3\_seurat\_analysis/BMK\_3\_Integrated/BMK\_4\_MarkerGene/BMK\_3\_Anno\_enrichment/All.cluster\*/BMK\_1\_Anno/
+
+功能富集分析及基因注释的结果文件下载链接(展示一个样本)
+
+#### **4.4.3 GO功能富集分析**
+
+GO数据库是GO组织（Gene Ontology Consortium）于2000年构建的一个结构化的标准生物学注释系统，旨在建立基因及其产物知识的标准词汇体系，适用于各个物种。GO注释系统是一个有向无环图，包含三个主要分支，即：生物学过程（Biological Process），分子功能（Molecular Function）和细胞组分（Cellular Component）。对每个cluster的差异基因集，采用ClusterProfiler对基因分别进行生物学过程，分子功能和细胞组分的富集分析。富集分析采用超几何检验方法来寻找与整个基因组背景相比显著富集的GO条目。对富集结果得到的Term采用绘制柱状图气泡图等进行可视化。
+
+![图20 差异表达基因富集柱状图](<../../.gitbook/assets/image (10).png>)
+
+_注：图中横坐标为对应的GO term,纵坐标为-log10(pvalue)。每个柱子上的数字表示富集到该term的基因数。不同的颜色分别代表GO的三个本体：BP、CC、MF_
+
+![图21 差异表达基因富集气泡图](<../../.gitbook/assets/image (15).png>)
+
+_注：图中每一个圆表示一个term，横坐标表示term名称，纵坐标为富集因子（Enrichment Factor），表示差异基因中注释到某term的基因比例与所有基因中注释到该term的基因比例的比值。富集因子越大，表示差异表达基因在该term中的富集水平越显著。圆圈的颜色代表pvalue，pvalue越小，表示差异表达基因在该term中的富集显著性越可靠；圆圈的大小表示term中富集的基因数目，圆圈越大，表示基因越多。_
+
+![图22 差异表达基因富集网络图](<../../.gitbook/assets/image (1).png>)
+
+_注：差异表达基因与GO term的网络图.边的颜色代表不同的term,基因节点的颜色代表差异倍数,term节点越大说明富集到该term的基因数目越多。_
+
+对每个cluster的差异基因进行富集分析，富集到的Term做topGO有向无环图。topGO有向无环图能直观展示差异表达基因富集的GO节点（Term）及其层级关系，是差异表达基因GO富集分析的结果图形化展示，分支代表包含关系，从上至下所定义>的功能描述范围越来越具体。差异表达基因的topGO有向无环图如下:
+
+![图23 GO富集有向无环图](<../../.gitbook/assets/image (4).png>)
+
+_注：对每个GO节点进行富集，最显著的10个节点在图中用方框表示，图中还包含其各层对应关系。每个方框（或椭圆）内给出了该GO节点的内容描述和富集显著性值。不同颜色代表不同的富集显著性，颜色越深，显著性越高。_
+
+功能富集分析之GO分析结果文件路径：BMK\_3\_seurat\_analysis/BMK\_3\_Integrated/BMK\_4\_MarkerGene/BMK\_3\_Anno\_enrichment/All.cluster\*/BMK\_2\_GO\_enrichment/
+
+#### **4.4.4 KEGG功能注释及富集分析**
+
+在生物体内，不同的基因产物相互协调来行使生物学功能，对差异表达基因的通路（Pathway）注释分析有助于进一步解读基因的功能。KEGG（Kyoto Encyclopedia of Genes and Genomes）是系统分析基因功能、基因组信息数据库，它有助于研究者把基因及表达信息作为一个整体网络进行研究。作为有关Pathway的主要公共数据库(Kanehisa,2008），KEGG提供的整合代谢途径(pathway)查询，包括碳水化合物、核苷、氨基酸等的代谢及有机物的生物降解，不仅提供了所有可能的代谢途径，而且对催化各步反应的酶进行了全面的注解，包含有氨基酸序列、PDB库的链接等等，是进行生物体内代谢分析、代谢网络研究的强有力工具。
+
+对差异表达基因KEGG的注释结果按照KEGG中通路类型进行分类，分类图如下图所示：
 
 
-![](<../../.gitbook/assets/image (1).png>)
 
-![](<../../.gitbook/assets/image (3).png>)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
