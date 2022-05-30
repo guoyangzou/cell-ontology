@@ -1,6 +1,6 @@
-# 8 附录
+# 7 附录
 
-## **8.1 文章引用致谢**
+## **7.1 文章引用致谢**
 
 如果您使用了百迈客测序、分析或者获得了其他有效帮助，我们期望您在论文发表时提及我们，感谢您对我们的支持和鼓励。
 
@@ -10,7 +10,7 @@ Sequencing was was carried out by the IlluminaNovaSeq 6000 (performed by Biomark
 
 Bioinformatics analysis was performed by Biomarker Technologies Corporation(Beijing, China).
 
-## **8.2 分析软件及数据库**
+## **7.2 分析软件及数据库**
 
 **附表1 软件列表**
 

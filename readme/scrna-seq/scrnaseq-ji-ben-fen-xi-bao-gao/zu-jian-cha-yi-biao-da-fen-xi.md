@@ -70,7 +70,7 @@ M1\_vs\_M2.cluster3.diff\_featuregene.annotation.xls.html
 
 功能富集分析及基因注释的结果文件下载链接(展示一个样本)
 
-## **5.3 GO功能富集分析**
+### **5.2.1 GO功能富集分析**
 
 GO数据库是GO组织（Gene Ontology Consortium）于2000年构建的一个结构化的标准生物学注释系统，旨在建立基因及其产物知识的标准词汇体系，适用于各个物种。GO注释系统是一个有向无环图，包含三个主要分支，即：生物学过程（Biological Process），分子功能（Molecular Function）和细胞组分（Cellular Component）。对每个cluster的差异基因集，采用ClusterProfiler对基因分别进行生物学过程，分子功能和细胞组分的富集分析。富集分析采用超几何检验方法来寻找与整个基因组背景相比显著富集的GO条目。对富集结果得到的Term采用绘制柱状图气泡图等进行可视化。
 
@@ -95,7 +95,7 @@ _注：差异表达基因与GO term的网络图.边的颜色代表不同的term,
 
 功能富集分析之GO分析结果文件路径：BMK\_3\_seurat\_analysis/BMK\_3\_Integrated/BMK\_5\_Group\_Anlysis/BMK\_1\_\*/BMK\_3\_enrichment/\*/BMK\_2\_GO\_enrichment/
 
-## **5.4 KEGG功能注释及富集分析**
+### **5.2.2 KEGG功能注释及富集分析**
 
 在生物体内，不同的基因产物相互协调来行使生物学功能，对差异表达基因的通路（Pathway）注释分析有助于进一步解读基因的功能。KEGG（Kyoto Encyclopedia of Genes and Genomes）是系统分析基因功能、基因组信息数据库，它有助于研究者把基因及表达信息作为一个整体网络进行研究。作为有关Pathway的主要公共数据库(Kanehisa,2008），KEGG提供的整合代谢途径(pathway)查询，包括碳水化合物、核苷、氨基酸等的代谢及有机物的生物降解，不仅提供了所有可能的代谢途径，而且对催化各步反应的酶进行了全面的注解，包含有氨基酸序列、PDB库的链接等等，是进行生物体内代谢分析、代谢网络研究的强有力工具。
 
@@ -123,7 +123,7 @@ _注：差异表达基因与KEGG通路的网络图.边的颜色代表不同的�
 
 功能富集分析之KEGG分析结果文件路径：BMK\_3\_seurat\_analysis/BMK\_3\_Integrated/BMK\_5\_Group\_Anlysis/BMK\_1\_\*/BMK\_3\_enrichment/\*/BMK\_3\_KEGG\_enrichment/
 
-## **5.5 Reactome功能富集分析**
+### **5.2.3 Reactome功能富集分析**
 
 Reactome\[15]是一个免费的、开源的信号和代谢分子的关系数据库。Reactome数据库搜集了人类相关的反应和生物学通路（包含 13,827 个人类反应，分为 2,536 条通路，涉及 11,374 种蛋白质）。典型的生物学通路包括：中间代谢、信号传导、转录调控、细胞凋亡和疾病。富集结果如下表所示。
 
@@ -158,3 +158,35 @@ M1\_vs\_M2.cluster3\_reactome\_enrich.list.html
 _注：图中每一个圆表示一个Reactome通路，横坐标表示通路名称，纵坐标为GeneRatio。圆圈的颜色代表pvalue，pvalue越小，表示差异表达基因在该通路中的富集显著性越可靠；圆圈的大小表示通路中富集的基因数目，圆圈越大，表示基因越多。_
 
 Reactome分析结果文件路径：BMK\_3\_seurat\_analysis/BMK\_3\_Integrated/BMK\_5\_Group\_Anlysis/BMK\_1\_\*/BMK\_3\_enrichment/\*/BMK\_4\_Reactome\_enrichment
+
+## **5.3 细胞周期鉴定**
+
+细胞周期（cell cycle）是指细胞从一次分裂完成开始到下一次分裂结束所经历的全过程，主要分G1、S、G2和M期。G1期是DNA合成准备期，S期是DNA合成期，G2期是分裂准备期，M期是分裂期。细胞周期调控是机体维持细胞增殖有序性及基因组DNA稳定性的关键，细胞周期失控导致各种疾病，在肿瘤发病中处于极其重要的中心环节，细胞周期的超常快速进行或在DNA复制不完全或有损伤时继续推进，将导致癌变。利用Seurat的AddModuleScore函数对单细胞转录组数据（单细胞表达矩阵）进行细胞周期分析，基于Seurat内置的周期特征蛋白，计算每个细胞内周期特征蛋白的转录表达水平，对每个细胞可能所处的周期状态进行评分，判断细胞是否处于增殖状态。
+
+细胞周期鉴定结果文件路径：BMK\_5\_Cell\_Cycle
+
+**表20 细胞周期鉴定表**
+
+| Cell                  | sample | S.Score | G2M.Score | Phase |
+| --------------------- | ------ | ------- | --------- | ----- |
+| AAACCCAAGGTGGCTA-1\_1 | M1     | -0.01   | -0.02     | G1    |
+| AAACCCACAACCAACT-1\_1 | M1     | -0.0    | 0.02      | G2M   |
+| AAACCCACACGGGCTT-1\_1 | M1     | -0.01   | -0.01     | G1    |
+| AAACCCACATAGAATG-1\_1 | M1     | -0.01   | 0.01      | G2M   |
+| AAACCCAGTCGCCACA-1\_1 | M1     | -0.01   | -0.01     | G1    |
+
+_注：Cell：barcode标记的细胞名。_\
+_sample：样本名。_\
+_S.Score：计算得到的S期得分。_\
+_G2M.Score：计算得到的G2/M期得分_\
+_Phase：细胞所处的周期_
+
+All.cell\_cycle.xls.html
+
+![图46 细胞周期TNSE/UMAP图](<../../../.gitbook/assets/image (6).png>)
+
+注：图中不同的颜色表示细胞所处的不同细胞周期
+
+细胞周期鉴定结果文件下载链接：BMK\_5\_Cell\_Cycle/
+
+细胞周期鉴定结果文件下载链接
